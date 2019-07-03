@@ -261,7 +261,7 @@
 
                           <tr>
                             <td><?php echo $no; ?></td>
-                            <td><?php echo $row['date_now']; ?></td>
+                            <td><?php echo $row['start_date']; ?></td>
                             <td><?php echo $row['wo_id']; ?></td>
                             <td><?php echo $row['so_id']; ?></td>
                             <td><?php echo $rp, number_format($total, 0, ".", "."); ?></td>
