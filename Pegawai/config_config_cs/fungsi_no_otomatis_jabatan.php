@@ -2,7 +2,7 @@
 	include "config_config_cs/koneksi-data-peg-lr-com.php";
  
 	//membaca kode barang terbesar
-	$query = "SELECT max(kode_jabatan) AS maxKode FROM tbl_data_jabatan";
+	$query = "SELECT max(kode_jabatan) as maxKode FROM tbl_data_jabatan";
 	$hasil = mysqli_query($connect, $query);
 	$data = mysqli_fetch_array($hasil);
 	$kodeBarang = $data['maxKode'];
