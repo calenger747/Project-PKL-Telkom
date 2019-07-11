@@ -1,6 +1,6 @@
 <?php $rw = $this->session->userdata('rw'); ?>
 <?php
-  $total = count($total_penduduk);
+  $total = $total_penduduk;
   $total_hari = count($total_penduduk_hari);
 ?>
 <div class="col-md-3">
@@ -17,6 +17,10 @@
                 <div class="list-group">
                   <a href="<?php echo base_url();?>home_lurah" class="list-group-item">
                     <span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Beranda
+                  </a>
+
+                  <a href="<?php echo base_url();?>home_lurah/kategori_pelayanan" class="list-group-item">
+                    <span class="glyphicon glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add Kategori Pelayanan
                   </a>
 
                  <a id="flip-admin" class="list-group-item cursor">

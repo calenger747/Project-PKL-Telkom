@@ -27,7 +27,7 @@ class Home_lurah extends CI_Controller
         $data['title'] = 'Home Lurah &minus; SIDAPEN';
         $data['nama'] = $this->session->userdata('user_nama');
         $data['total_penduduk_hari'] = $this->m_sidapen->jumlah_penduduk_hari()->result();
-        $data['total_penduduk'] = $this->m_sidapen->data_penduduk()->num_rows();
+        $data['total_penduduk'] = $this->m_sidapen->data_penduduk();
         $data['total_penduduk_sementara'] = $this->m_sidapen->data_penduduk_sementara()->num_rows();
         $data['jumlah_kk'] = $this->m_sidapen->data_kk()->num_rows();
         
@@ -2746,7 +2746,7 @@ $data[++$i] = array('');
     }
 	
 	function data_statistik_sosial(){
-       $data['title'] = 'Data Statistik &minus; SIDAPEN';
+        $data['title'] = 'Data Statistik &minus; SIDAPEN';
 		$data['rt'] = $this->session->userdata('rt');
         $data['rw'] = $this->session->userdata('rw');
 		$data['rw'] = $this->input->get('rw');
@@ -2757,5 +2757,76 @@ $data[++$i] = array('');
 		$data['jumlah_sosial'] = $this->m_sidapen->jumlah_sosial_rw($rw)->result();
 		
         $this->load->view('v_lurah_statistik_sosial', $data);
+    } 
+
+    // Kategori Pelayanan
+    function kategori_pelayanan(){
+        $data['title'] = 'Data Kategori Pelayanan &minus; SIDAPEN';
+        $data['nama'] = $this->session->userdata('user_nama');
+        $data['pelayanan'] = $this->m_sidapen->kategori_pelayanan()->result();
+        $data['total_penduduk_hari'] = $this->m_sidapen->jumlah_penduduk_hari()->result();
+        $data['total_penduduk'] = $this->m_sidapen->data_penduduk()->num_rows();
+        $data['total_penduduk_sementara'] = $this->m_sidapen->data_penduduk_sementara()->num_rows();
+        $data['jumlah_kk'] = $this->m_sidapen->data_kk()->num_rows();
+        
+        $this->load->view('v_lurah_kategori_pelayanan', $data);
+    }
+
+    // Tambah Kategori Pelayanan
+    public function tambah_kategori_pelayanan(){
+        $kategori = $this->input->post('kategori');
+
+        $data = array(
+
+            'nama_kategori'      => $kategori
+            
+        );
+
+        $this->m_sidapen->tambah_Kategori($data);
+
+        $this->session->set_flashdata('pesan', 'Kategori pelayanan berhasil ditambahkan');
+
+        //redirect
+        redirect('home_lurah/kategori_pelayanan');
+    }
+
+    // Edit Kategori Pelayanan
+    public function edit_kategori(){
+        $id = $this->input->post('id');
+        $kategori = $this->input->post('kategori');
+
+        $data = array(
+
+            'nama_kategori'      => $kategori
+            
+        );
+
+        $this
+        ->db
+        ->where('id', $id);
+        $this
+        ->db
+        ->update('tbl_kategori_pelayanan', $data);
+
+        $this->session->set_flashdata('pesan', 'Kategori pelayanan berhasil diupdate');
+
+        //redirect
+        redirect('home_lurah/kategori_pelayanan');
+    }
+
+    // Hapus Kategori Pelayanan
+    public function delete_kategori(){
+        $kode = $this->uri->segment(3);
+
+        $this
+        ->db
+        ->where('id', $kode);
+        $this
+        ->db
+        ->delete('tbl_kategori_pelayanan');
+
+        $this->session->set_flashdata('pesan', 'Kategori pelayanan berhasil dihapus');
+        redirect('home_lurah/kategori_pelayanan');
+
     }
 }

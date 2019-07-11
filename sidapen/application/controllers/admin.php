@@ -361,7 +361,7 @@ class Admin extends CI_Controller{
             'tanggal_input' => $this->input->post('tanggal_input')
         );
 
-        $cek_rw = $this->m_sidapen->cek_rw($user, $rw);
+        $cek_rw = $this->m_sidapen->cek_rw_add($user, $rw);
         if($cek_rw->num_rows() > 0){
             $this->session->set_flashdata('pesan', 'Data gagal disimpan. Username atau RW sudah terdaftar.');
             redirect('admin/tambah_rw');

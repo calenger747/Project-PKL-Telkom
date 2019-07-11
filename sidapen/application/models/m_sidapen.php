@@ -42,6 +42,10 @@ class m_sidapen extends CI_Model{
     function cek_rw($user, $rw, $user_id){
         return $this->db->query("SELECT * FROM tbl_m_user WHERE (user_id!='$user_id' AND user_name='$user' AND user_role='4') OR (user_id!='$user_id' AND rw='$rw' AND user_role='4')");
     }
+    
+    function cek_rw_add($user, $rw){
+        return $this->db->query("SELECT * FROM tbl_m_user WHERE (user_name='$user' AND user_role='4') OR (rw='$rw' AND user_role='4')");
+    }
 
     function cek_kk($kki, $id_kk){
         return $this->db->query("SELECT * FROM tbl_t_keluarga WHERE id_kk!='$id_kk' AND kki='$kki'");
@@ -903,5 +907,21 @@ class m_sidapen extends CI_Model{
 	
 	function jumlah_sosial_rw($rw){
         return $this->db->get_where('sarana_sosial', array('rw'=>$rw));
+    }
+
+    // Pelayanan
+    function kategori_pelayanan(){
+        return $this->db->query("SELECT * FROM tbl_kategori_pelayanan");
+    }
+
+    // Tambah Kategori
+    function tambah_kategori($kategori){
+        $query = $this->db->insert("tbl_kategori_pelayanan", $kategori);
+
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
