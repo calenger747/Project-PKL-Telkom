@@ -11,7 +11,7 @@ include 'connection.php';
 	$alamat =$_POST['alamat'];
 	$no_hp =$_POST['no_hp'];
 	
-$query =mysqli_query($conn," INSERT INTO booking_unit (kode_booking,tgl_booking,kode_unit,no_kk,nama,no_ktp,alamat,no_hp) VALUES ('$kode_booking','$tgl_booking','$id_unit','$no_kk','$nama','$no_ktp','$alamat','$no_hp')");
+$query =mysqli_query($conn," INSERT INTO booking_unit (kode_booking,tgl_booking,kode_unit,no_kk,nama,no_ktp,alamat,no_hp,status) VALUES ('$kode_booking','$tgl_booking','$id_unit','$no_kk','$nama','$no_ktp','$alamat','$no_hp','Pending')");
 
 if ($query) {
 	$update = mysqli_query($conn, "UPDATE tbl_unit SET status = 'Booking' WHERE id_unit='$id_unit'");
