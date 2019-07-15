@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2019 at 05:20 AM
+-- Generation Time: Jul 15, 2019 at 09:23 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -48,7 +48,9 @@ CREATE TABLE `tbl_absen` (
 INSERT INTO `tbl_absen` (`id_absen`, `nip`, `tgl_absen`, `check_in`, `keterangan_ci`, `geotag_ci`, `check_out`, `keterangan_co`, `geotag_co`, `status`) VALUES
 (1, '18150', '2019-06-13', '2019-06-13 09:52:05', '', '-6.212736, 106.875180', '2019-06-14 15:41:34', '131231', '-6.212736, 106.875180', 'Terlambat'),
 (2, '111', '2019-06-14', '2019-06-14 08:00:00', '', '-6.212736, 106.875180', '2019-06-14 15:39:22', '', '-6.212736, 106.875180', 'Hadir'),
-(3, '18150', '2019-06-17', '2019-06-17 09:59:56', '', '-6.2053671, 106.87685300000001', NULL, '', '', 'Terlambat');
+(3, '18150', '2019-06-17', '2019-06-17 09:59:56', '', '-6.2053671, 106.87685300000001', NULL, '', '', 'Terlambat'),
+(4, '18150', '2019-07-03', '2019-07-03 08:40:14', '', '-6.2053671, 106.87685300000001', '2019-07-03 19:06:08', '', '-6.3894798, 106.87685300000001', 'Hadir'),
+(5, '18150', '2019-07-09', '2019-07-09 09:40:24', '', '-6.2053671, 106.87685300000001', NULL, '', '', 'Terlambat');
 
 --
 -- Indexes for dumped tables
@@ -68,7 +70,7 @@ ALTER TABLE `tbl_absen`
 -- AUTO_INCREMENT for table `tbl_absen`
 --
 ALTER TABLE `tbl_absen`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
